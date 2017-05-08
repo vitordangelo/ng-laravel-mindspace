@@ -1,6 +1,7 @@
 import { Quote } from './../quote.interface';
 import { QuoteService } from './../quote.service';
 import { Component, OnInit } from '@angular/core';
+import { Quot } from './../quot';
 
 @Component({
   selector: 'app-quotes',
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuotesComponent implements OnInit {
 
-  quotes: Quote[];
+  quotes: any = [];
   constructor(private quoteService: QuoteService) { }
 
   ngOnInit() {
@@ -19,8 +20,14 @@ export class QuotesComponent implements OnInit {
     this.quoteService.getQuotes()
       .subscribe(quotes => {
         this.quotes = quotes;
-        console.log(this.quotes);
       }, error => console.log(error));
+  }
+
+   onDeleted(quote) {
+    const position = this.quotes.findIndex((itens) => {
+      return itens.id == quote.id;
+    });
+    this.quotes.splice(position, 1);
   }
 
 }
