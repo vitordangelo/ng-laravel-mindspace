@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { QuoteService } from './quote.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,13 +10,17 @@ import { AppComponent } from './app.component';
 import { NewQuoteComponent } from './new-quote/new-quote.component';
 import { QuoteComponent } from './quote/quote.component';
 import { QuotesComponent } from './quotes/quotes.component';
+import { SignupComponent } from './signup/signup.component';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewQuoteComponent,
     QuoteComponent,
-    QuotesComponent
+    QuotesComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,7 @@ import { QuotesComponent } from './quotes/quotes.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [QuoteService],
+  providers: [QuoteService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
